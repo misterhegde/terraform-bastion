@@ -1,7 +1,11 @@
 provider "aws"{
     region="us-east-1"
-    access_key="AKIAYS65P3YUZIG63ZLU"
-    secret_key="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"
+    access_key=var.access_key
+    secret_key=var.secret_key
+}
+variable access_key {
+}
+variable secret_key {
 }
 variable vpc_cidr {
 }
