@@ -1,5 +1,0 @@
-vpc_cidr = "10.0.0.0/16"
-vpc_env_name = "dev"
-subnet_cidr = "10.0.10.0/24"
-access_key = "AKIAYS65P3YUZIG63ZLU"
-secret_key="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"
