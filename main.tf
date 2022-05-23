@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 0.12"
+  backend "s3" {
+    bucket = "terraform-bastion-state-bucket"
+    key = "terraform/state.tfstate"
+  }
+  
+}
+
+
 provider "aws"{
     region="us-east-1"
     access_key=var.access_key
