@@ -3,17 +3,7 @@ provider "aws"{
     access_key=var.access_key
     secret_key=var.secret_key
 }
-variable access_key {
-}
-variable secret_key {
-}
-variable vpc_cidr {
-}
-variable vpc_env_name {
-}
 
-variable subnet_cidr {
-}
 
 resource "aws_vpc" "dev-vpc"{
     cidr_block = var.vpc_cidr
@@ -80,23 +70,19 @@ data "aws_ami" "dev-ami" {
  
 }
 
-output "ami_id" {
-  value       = data.aws_ami.dev-ami.id
- 
-}
 
 
-  resource "aws_instance" "dev-instance"{
-      ami = data.aws_ami.dev-ami.id
-      instance_type = "t2.micro"
-      subnet_id = aws_subnet.dev-subnet-1.id
-      vpc_security_group_ids = [aws_security_group.dev-sg.id] 
-      associate_public_ip_address = true
 
-      tags = {
+resource "aws_instance" "dev-instance"{
+    ami = data.aws_ami.dev-ami.id
+    instance_type = "t2.micro"
+    subnet_id = aws_subnet.dev-subnet-1.id
+    vpc_security_group_ids = [aws_security_group.dev-sg.id] 
+    associate_public_ip_address = true
+    tags = {
         Name: "${var.vpc_env_name}-ec2"
 
-      }
+    }
 
-  }
+}
 
